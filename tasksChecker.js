@@ -18,7 +18,7 @@ const checkTasks = (callback) => {
         if (res.rowCount > 0) {
           for (i=0; i<res.rowCount; i++) {
             // check is alert is expired
-            if (new Date() > res.rows[i].alert_time) {
+            if (new Date().getTime() > res.rows[i].alert_time) {
               let task = {
                 id: res.rows[i].id,
                 user_id: res.rows[i].user_id,
@@ -62,6 +62,7 @@ const updateTask = (id) => {
     if (err) console.error("error expiring alert", err.stack);
   });
 }
+
 module.exports = {
   checkTasks,
   getTelegramById,

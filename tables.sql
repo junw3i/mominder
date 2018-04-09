@@ -19,7 +19,7 @@ create table if not exists alerts (
   name varchar(255),
   description text,
   type varchar(255),
-  is_expired boolean,
+  is_expired boolean DEFAULT FALSE,
   alert_time timestamp,
   created_at timestamp,
   updated_at timestamp

@@ -5,7 +5,8 @@ module.exports = (db) => {
   return {
     create: (data, callback) => {
       // parse date and time together
-      let alert_time = moment(data[0].date + " " + data[0].time, "YYYY-MM-DD hh:mm").format("YYYY-MM-DD HH:mm:ss");
+      let alert_time = moment(data[0].date + " " + data[0].time, "YYYY-MM-DD hh:mm");
+      alert_time = alert_time.add(data[0].timezone, 'hours').format("YYYY-MM-DD HH:mm:ss");
       // console.log(alert_time);
       // write to postgres
       db.query(`insert into alerts (user_id, name, description, type, alert_time, created_at, updated_at) values (${data[1]}, '${data[0].name}', '${data[0].description}', 'alert', '${alert_time}', now(), now());`, (err, res) => {

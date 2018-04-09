@@ -1,6 +1,9 @@
 // text area
 $(document).ready(function(){
   $('#textarea1').trigger('autoresize');
+  var x = new Date();
+  var currentTimeZoneOffsetInHours = x.getTimezoneOffset() / 60;
+  $("#timezone").val(currentTimeZoneOffsetInHours);
 });
 
 // datepicker
