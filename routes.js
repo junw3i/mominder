@@ -112,6 +112,7 @@ app.get('/', (req, res) => {
     db.pool.query(`select id, name, description, type, TO_CHAR(alert_time, 'DY, DD MON at HH:MI AM') as display_time, alert_time from alerts where user_id=${req.user.id} and is_expired='FALSE' order by alert_time;`, (err, queryRes) => {
       if (err) console.error("unable to get user alerts", err.stack);
       // console.log(queryRes.rows);
+
       res.render("home", {alerts: queryRes.rows, isAuthenticated });
     })
   } else {
