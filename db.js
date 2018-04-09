@@ -53,5 +53,4 @@ module.exports = {
   users: users(pool),
   alerts: alerts(pool),
   crypto: crypto(pool)
-
 };

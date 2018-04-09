@@ -293,3 +293,7 @@ a {
 #reduce-margin-bottom {
   margin-bottom: 0px;
 }
+
+.radio {
+  color: #b71c1c;
+}

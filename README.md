@@ -1,12 +1,36 @@
-# reminder app
+# Mominder
+A mobile-first reminder application that works just like your mom
 
-psql -d DATABASE_NAME -U USERNAME -f tables.sql
-postgres -D /usr/local/var/postgres
+## Usage
+https://evening-lake-36677.herokuapp.com/
 
-do timezone adjustments
-do form validation for alerts
-use flex box for telegram view
-localize datepicker and timepicker for materialize css to local colors
+- Sign up for an account
+- Link your telegram to your Mominder application
+- Start creating alerts for Mominder to remind your future self
+
+## Libraries used under the hood
+- Front-end
+    - Materialize CSS
+    - JQuery
+- Back-end
+    - bcrypt
+    - connect-flash
+    - connect-pg-simple
+    - cookie-parser
+    - dotenv
+    - express
+    - express-handlebars
+    - express-messages
+    - express-session
+    - express-validator
+    - method-override
+    - moment
+    - passport
+    - passport-local
+    - pg
+    - request
+    - telebot
 
 
-html5 form validation
+## Support
+Please [open an issue](https://github.com/junw3i/mominder/issues/new) for support.
