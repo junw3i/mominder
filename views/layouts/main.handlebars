@@ -13,6 +13,11 @@
 
 </head>
 <body>
+  <ul id="dropdown1" class="dropdown-content red lighten-2">
+    <li><a href="/alerts/create">New</a></li>
+    <li class="divider"></li>
+    <li><a href="/alerts/crypto">Crypto</a></li>
+  </ul>
   <nav>
     <div class="container">
       <div class="nav-wrapper">
@@ -22,7 +27,8 @@
         <ul class="right hide-on-med-and-down">
           <li class><a href="/">Home</a></li>
           {{#if user }}
-          <li><a href="/alerts/create">Alerts</a></li>
+
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Alerts<i class="material-icons right">arrow_drop_down</i></a></li>
           <li><a href="#">Profile</a></li>
           <li><a href="/users/logout">Logout</a></li>
           {{else}}
@@ -35,7 +41,9 @@
         <ul class="sidenav" id="mobile-demo">
           <li><a href="/">Home</a></li>
           {{#if user }}
-          <li><a href="/alerts/create">Alerts</a></li>
+          <li><a class="subheader">Alerts</a></li>
+          <li><a href="/alerts/create">&nbsp;&nbsp;Alerts</a></li>
+          <li><a href="/alerts/crypto">&nbsp;&nbsp;Crypto</a></li>
           <li><a href="/alerts/create">Profile</a></li>
           <li><a href="/users/logout">Logout</a></li>
           {{else}}

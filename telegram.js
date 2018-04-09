@@ -20,23 +20,24 @@ bot.on(['/start'], (msg) => {
 });
 
 bot.on(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, (msg) => {
-  db.pool.query(`select telegram_id from users where email='${msg.text}'`, (err, res) => {
+  let emailInput = msg.text.toLowerCase();
+  db.pool.query(`select telegram_id from users where email='${emailInput}'`, (err, res) => {
     if (err) console.error("error", err.stack);
-    console.log("@@@", msg.from.id, msg.text, res.rows);
+    console.log("@@@", msg.from.id, emailInput, res.rows);
     if (res.rowCount === 1 && res.rows[0].telegram_id == null) {
-      db.pool.query(`update users set telegram_id='${msg.from.id}' where email='${msg.text}'`, (err2, res2) => {
+      db.pool.query(`update users set telegram_id='${msg.from.id}' where email='${emailInput}'`, (err2, res2) => {
         console.error("error inserting telegram_id", err2);
         console.log(res2);
         if (res2.rowCount > 0) {
-          bot.sendMessage(msg.from.id, `${msg.text} linked`);
+          bot.sendMessage(msg.from.id, `${emailInput} linked`);
         } else {
           bot.sendMessage(msg.from.id, `something went wrong`);
         }
       })
     } else if (res.rowCount == 0) {
-      bot.sendMessage(msg.from.id, `${msg.text} not found in Mominder.`);
+      bot.sendMessage(msg.from.id, `${emailInput} not found in Mominder.`);
     } else if (res.rowCount === 1 && res.rows[0].telegram_id != null) {
-      bot.sendMessage(msg.from.id, `${msg.text} is already linked to a Mominder account.`);
+      bot.sendMessage(msg.from.id, `${emailInput} is already linked to a Mominder account.`);
     }
   })
 });

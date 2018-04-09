@@ -1,5 +1,7 @@
 $(document).ready(function(){
   $('.sidenav').sidenav();
+  $(".dropdown-trigger").dropdown();
+
 
   // error Flash
   const alertsError = $(".alerts_error");

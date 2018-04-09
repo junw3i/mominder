@@ -55,7 +55,7 @@ app.use(session({
     pool : db.pool,                // Connection pool
     tableName : 'session'   // Use another table-name than the default "session" one
   }),
-  secret: 'my_sercet_key',
+  secret: process.env.MY_SECRET,
   saveUninitialized: true,
   resave: true,
   cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
